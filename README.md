@@ -6,6 +6,7 @@ At this project we will add multiple Katas where store different solutions for t
 
 This project will contain multiple projects inside, independent between of them, so we will have at the root path the different Katas, and inside them each independent project with different solutions
 
+``` bash
 /root
     |
     |- kata1
@@ -16,4 +17,6 @@ This project will contain multiple projects inside, independent between of them,
     |   |-solution1
     |   |-solution2
     |- kata3
+```
+
 Each Kata should contain their own README.md explaining the statement of the exercise.
