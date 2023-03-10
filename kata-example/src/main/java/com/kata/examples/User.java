@@ -2,15 +2,14 @@ package com.kata.examples;
 
 import java.util.Objects;
 
-public class User {
-    private long id;
-    private String name;
-    private String profile;
 
-    public User(long id, String name, String profile) {
-        this.id = id;
+public class User {
+    private String name;
+    private String email;
+
+    public User(String name, String email) {
         this.name = name;
-        this.profile = profile;
+        this.email = email;
     }
 
     @Override
@@ -18,19 +17,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && Objects.equals(name, user.name) && Objects.equals(profile, user.profile);
+        return Objects.equals(name, user.name) && Objects.equals(email, user.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, profile);
-    }
-
-    public String getProfile() {
-        return profile;
-    }
-
-    public String getName() {
-        return name;
+        return Objects.hash(name, email);
     }
 }
+

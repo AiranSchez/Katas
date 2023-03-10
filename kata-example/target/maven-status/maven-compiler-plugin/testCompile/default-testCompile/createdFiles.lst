@@ -1,1 +1,7 @@
-com/kata/examples/AppTest.class
+com/kata/examples/UserServiceShould2$User.class
+com/kata/examples/UserServiceShould2$UserService.class
+com/kata/examples/UserServiceShould2$UserController.class
+com/kata/examples/UserServiceShould.class
+com/kata/examples/UserServiceShould2$UserRepository.class
+com/kata/examples/UserServiceShould2$MySQLUserRepository.class
+com/kata/examples/UserServiceShould2.class
