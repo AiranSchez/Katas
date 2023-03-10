@@ -1,0 +1,6 @@
+[submodule "templates/python-boilerplate"]
+	path = templates/python-boilerplate
+	url = git@github.com:lean-mind/python-boilerplate.git
+[submodule "templates/javascript-katas-template"]
+	path = templates/javascript-katas-template
+	url = git@github.com:lean-mind/javascript-katas-template.git
