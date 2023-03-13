@@ -20,3 +20,7 @@ This project will contain multiple projects inside, independent between of them,
 ```
 
 Each Kata should contain their own README.md explaining the statement of the exercise.
+
+git submodule add link
+copy del repo en tu nueva kata 
+borrar el .git de la kata para que detecte git
