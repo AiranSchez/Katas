@@ -4,3 +4,6 @@
 [submodule "templates/javascript-katas-template"]
 	path = templates/javascript-katas-template
 	url = git@github.com:lean-mind/javascript-katas-template.git
+[submodule "markdown-kata/javascript2"]
+	path = markdown-kata/javascript2
+	url = git@github.com:lean-mind/javascript-katas-template.git
