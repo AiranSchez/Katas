@@ -1,0 +1,24 @@
+{
+  "name": "js-jest-boilerplate",
+  "author": "Kevin Hierro",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "tdd-example-javascript",
+  "directories": {
+    "src": "src",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest --watchAll --verbose",
+    "clear-jest": "jest --clearCache"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "babel-jest": "^27.5.1",
+    "babel-polyfill": "^6.26.0",
+    "jest": "^27.5.1"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
