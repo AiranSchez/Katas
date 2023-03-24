@@ -1,7 +1,7 @@
 import fs from "fs"
 
 const errors = {
-    notFoundCommand: "Command not found",
+    notFoundCommand: "Invalid command, please use `process` to start using the markdown converter",
     commandNotValid: "You should specify the file you want to analyze",
 }
 
@@ -11,9 +11,8 @@ const write = (filePath) => {
 
 const commandLineProcessor = (command) => {
     const commandSplitted = command.split(" ")
-    const notFoundCommand = commandSplitted[0] != "process"
-    console.log(commandSplitted);
-    if (notFoundCommand){
+    const invalidCommand = commandSplitted[0] != "process"
+    if (invalidCommand){
         return errors.notFoundCommand
     }
     const commandIsNotValid = commandSplitted.length === 1

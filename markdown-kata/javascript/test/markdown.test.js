@@ -33,7 +33,7 @@ process file1.md output_file.md
 
 describe("Markdown kata", () => {
     it("markdown command will not work if trigger is not defined", () => {
-        expect(commandLineProcessor("random input output")).toEqual("Command not found");
+        expect(commandLineProcessor("random input output")).toEqual("Invalid command, please use `process` to start using the markdown converter");
     });
 
     it("markdown will not work if command is not completed", () => {
