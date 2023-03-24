@@ -60,10 +60,23 @@ describe("Markdown kata", () => {
     });
 
     it("will create a output file specified by args", () => {
-        commandLineProcessor("process input.md output2.md")
+        commandLineProcessor("process input.md output.md")
         
-        const outputFile = fs.readFileSync("./files/output2.md", (error, data) => { return data })
+        const outputFile = fs.readFileSync("./files/output.md", (error, data) => { return data })
 
         expect(outputFile).toBeDefined()
     });
+
+    it("will process an markdown file and generates an output", async () => {
+        const markdownText = "[Hola](www.youtube.es) en el [siguiente enlace](www.google.es) pueden encontrar mas info"
+        await fs.writeFileSync('./files/input.md', markdownText);
+
+        commandLineProcessor("process input.md outputfinal.md")
+        
+        const outputFileContent = fs.readFileSync("./files/outputfinal.md", (error, data) => { return data })
+        
+        expect(outputFileContent).toBe("Hola[^1] en el siguiente enlace[^2] pueden encontrar mas info\n\n[^1]: www.youtube.es\n[^2]: www.google.es")
+    });
+
+    
 })
