@@ -23,6 +23,6 @@ Each Kata should contain their own README.md explaining the statement of the exe
 
 ## Add new kata folder
 
-1- git submodule add link-to-repo-template name-of-folder
-2- cp name-of-folder new-destiny
-3- rm .git inside new-destiny
+ 1. git submodule add link-to-repo-template name-of-folder
+ 2. cp name-of-folder new-destiny
+ 3. rm .git inside new-destiny
