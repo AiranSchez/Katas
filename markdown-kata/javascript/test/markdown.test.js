@@ -1,4 +1,4 @@
-import { commandLineProcessor } from "../src/markdown";
+import { commandLineProcessor, addFootNotes} from "../src/markdown";
 import fs from "fs"
 import path from "node:path";
 // import regeneratorRuntime from "regenerator-runtime";
@@ -73,10 +73,11 @@ describe("Markdown kata", () => {
 
         commandLineProcessor("process input.md outputfinal.md")
         
-        const outputFileContent = fs.readFileSync("./files/outputfinal.md", (error, data) => { return data })
-        
+        const outputFileContent = fs.readFileSync("./files/outputfinal.md", (error, data) => { return data })    
         expect(outputFileContent).toBe("Hola[^1] en el siguiente enlace[^2] pueden encontrar mas info\n\n[^1]: www.youtube.es\n[^2]: www.google.es")
     });
 
-    
+    it("will not transform if there is no content", () => {
+        expect(addFootNotes("")).toBe("")
+    })
 })
