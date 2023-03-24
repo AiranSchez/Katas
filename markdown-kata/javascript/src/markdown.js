@@ -23,4 +23,9 @@ const commandLineProcessor = (command) => {
     const outputFileName = commandSplitted[2]
     write(outputFileName)
 }
-export { commandLineProcessor };
+
+const addFootNotes = (input) => {
+    return input
+}
+
+export { commandLineProcessor, addFootNotes };
