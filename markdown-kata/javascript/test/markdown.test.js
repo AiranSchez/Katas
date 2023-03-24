@@ -43,15 +43,15 @@ describe("Markdown kata", () => {
             await fs.unlink(path.join(directory, file), () => {});
         }
     });
-    it("markdown command will not work if trigger is not defined", () => {
+    it("will not work if trigger is not defined", () => {
         expect(commandLineProcessor("random input output")).toEqual("Invalid command, please use `process` to start using the markdown converter");
     });
 
-    it("markdown will not work if command is not completed", () => {
+    it("will not work if command is not completed", () => {
         expect(commandLineProcessor("process")).toEqual("You should specify the file you want to analyze");
     });
 
-    it("markdown will create a default output file", () => {
+    it("will create a default output file", () => {
         commandLineProcessor("process input.md")
         
         const outputFile = fs.readFileSync("./files/output.md", (error, data) => { return data })
