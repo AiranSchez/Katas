@@ -1,0 +1,5 @@
+com/kata/examples/UserController.class
+com/kata/examples/User.class
+com/kata/examples/UserService.class
+com/kata/examples/UserRepository.class
+com/kata/examples/MySQLUserRepository.class
