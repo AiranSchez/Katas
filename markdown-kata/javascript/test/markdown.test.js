@@ -1,5 +1,6 @@
 import { commandLineProcessor } from "../src/markdown";
 import fs from "fs"
+import path from "node:path";
 // import regeneratorRuntime from "regenerator-runtime";
 
 /*
@@ -28,10 +29,20 @@ Hola que tal, visita el link[^1] para enterarte de todas las novedades[^2]
 
 
 Linea de comandos:
+1- random input output -> Falla porque no es un comando válido
+2- process -> Falla porque necesita input
+3- process input.md -> Te funciona y te crea un fichero vacío
+4- process input.md output.md
 process file1.md output_file.md
 */
 
 describe("Markdown kata", () => {
+    afterEach(async() => {
+        const directory = "./files"
+        for (const file of await fs.readdirSync(directory)) {
+            await fs.unlink(path.join(directory, file), () => {});
+        }
+    });
     it("markdown command will not work if trigger is not defined", () => {
         expect(commandLineProcessor("random input output")).toEqual("Invalid command, please use `process` to start using the markdown converter");
     });
@@ -43,7 +54,15 @@ describe("Markdown kata", () => {
     it("markdown will create a default output file", () => {
         commandLineProcessor("process input.md")
         
-        const outputFile = fs.readFileSync("./output.md", (error, data) => { return data })
+        const outputFile = fs.readFileSync("./files/output.md", (error, data) => { return data })
+
+        expect(outputFile).toBeDefined()
+    });
+
+    it("will create a output file specified by args", () => {
+        commandLineProcessor("process input.md output2.md")
+        
+        const outputFile = fs.readFileSync("./files/output2.md", (error, data) => { return data })
 
         expect(outputFile).toBeDefined()
     });
