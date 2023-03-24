@@ -1,59 +1,49 @@
-# String Calculator
+# MarkDown Kata
 
-Create a simple String calculator with a method signature:
+This is the final piece of the course, here the attendees will be able to put all the concepts in action and check how to work with TDD, TPP, Unit tests, Integration tests, Mock and Software Design.
 
-```markdown
-int Add(string numbers)
+- **Estimated time:** 3 hours
+- **Format:** Pairs
+
+## The Problem
+
+The goal is to implement a command line tool that takes a markdown file and returns another markdown file, applying certain transformations to the text.
+
+``` markdown
+$ markdown-transform link
+2footnote source.md destination.md
 ```
 
-The method can take up to two numbers, separated by commas, and will return their sum.
-for example “” or “1” or “1,2” as inputs.
-(for an empty string it will return 0)
-Hints:
+The first transformation is to turn links into footnotes. The syntax of a link is this:
 
-- Start with the simplest test case of an empty string and move to one and two numbers
-- Remember to solve things as simply as possible so that you force yourself to write tests you did not think about
-- Remember to refactor after each passing test
+``` markdown
+[visible text link](url)
+```
 
-***
+The syntax of a footnote is the following:
 
-- Allow the Add method to handle an unknown amount of numbers
+``` markdown
+visible text link [^anchor1]
 
-***
+[^anchor1]: url or text
+```
 
-- Allow the Add method to handle new lines between numbers (instead of commas).
-  the following input is ok: “1\n2,3” (will equal 6)
-  the following input is NOT ok: “1,\n” (not need to prove it - just clarifying)
+The goal is to make conversions like the following:
 
-***
+Source:
 
-- Support different delimiters
-  to change a delimiter, the beginning of the string will contain a separate line that looks like this: “//[delimiter]\n[numbers…]” for example “//;\n1;2” should return three where the default delimiter is ‘;’ .
-  the first line is optional. all existing scenarios should still be supported
+``` markdown
+[this book](https://codigosostenible.com) and some other text
+and some other text line.
+```
 
-***
+Transformation:
 
-- Calling Add with a negative number will throw an exception “negatives not allowed” - and the negative that was passed.
-  if there are multiple negatives, show all of them in the exception message.
+``` markdown
+this book [^anchor1] and some other text 
+and some other text line.
 
-***
+[^anchor1]: https://codigosostenible.com
+```
 
-- **STOP HERE** if you are a beginner. Continue if you can finish the steps so far in less than 30 minutes.
-
-***
-
-- Numbers bigger than 1000 should be ignored, so adding 2 + 1001 = 2
-
-***
-
-- Delimiters can be of any length with the following format: “//[delimiter]\n” for example: “//[***]\n1***2***3” should return 6
-
-***
-
-- Allow multiple delimiters like this: “//[delim1][delim2]\n” for example “//[*][%]\n1*2%3” should return 6.
-
-***
-
-- make sure you can also handle multiple delimiters with length longer than one char
-
-***
+There are multiple edge cases to consider: multiple links per line, several links sharing the same url...
