@@ -80,4 +80,8 @@ describe("Markdown kata", () => {
     it("will not transform if there is no content", () => {
         expect(addFootNotes("")).toBe("")
     })
+
+    it("will not transform if there is no links in content", () => {
+        expect(addFootNotes("Hola que tal")).toBe("Hola que tal")
+    })
 })
