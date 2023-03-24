@@ -24,8 +24,26 @@ const commandLineProcessor = (command) => {
     write(outputFileName)
 }
 
-const addFootNotes = (input) => {
-    return input
+const addFootNotes = (inputText) => {
+    const emptyText = inputText.length === 0
+    const noLinksDetected = !inputText.includes("](")
+    if (emptyText | noLinksDetected){
+        return inputText
+    }
+    const resultText = transformTextWithAnchors(inputText, "")
+    return resultText
+}
+
+const transformTextWithAnchors = (inputText, resulta) => {
+    if (inputText.length === 0){
+        return resulta
+    }
+    const firstLinkSplittedAppeareance = inputText.split(/\]\((.*)/s)
+    const linkText = firstLinkSplittedAppeareance[0].substring(1)
+    const linkUrl = inputText.split(/\]\((.*)/s)[1].substring(0, inputText.split(/\]\((.*)/s)[1].length -1)
+    const restOfContent = inputText.split(/\]\((.*)/s)[1].split(/\)(.*)/s)[1]
+    const result = linkText + '[^1]\n\n' + "[^1]:" + linkUrl
+    return transformTextWithAnchors(restOfContent, result)  
 }
 
 export { commandLineProcessor, addFootNotes };
