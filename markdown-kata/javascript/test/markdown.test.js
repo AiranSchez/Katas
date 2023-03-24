@@ -84,4 +84,8 @@ describe("Markdown kata", () => {
     it("will not transform if there is no links in content", () => {
         expect(addFootNotes("Hola que tal")).toBe("Hola que tal")
     })
+
+    it("will transform input text with anchors as footnotes", () => {
+        expect(addFootNotes("[Hola](www.youtube.es)")).toBe("Hola[^1]\n\n[^1]:www.youtube.es")
+    })
 })
