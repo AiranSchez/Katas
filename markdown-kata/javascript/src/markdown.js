@@ -1,6 +1,12 @@
+import fs from "fs"
+
 const errors = {
     notFoundCommand: "Command not found",
     commandNotValid: "You should specify the file you want to analyze",
+}
+
+const write = (filePath) => {
+    fs.openSync(filePath, 'w')
 }
 
 const commandLineProcessor = (command) => {
@@ -14,6 +20,6 @@ const commandLineProcessor = (command) => {
     if (commandIsNotValid) {
         return errors.commandNotValid
     }
-
+    write("./output.md")
 }
 export { commandLineProcessor };

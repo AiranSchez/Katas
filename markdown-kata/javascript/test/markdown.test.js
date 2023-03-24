@@ -40,10 +40,10 @@ describe("Markdown kata", () => {
         expect(commandLineProcessor("process")).toEqual("You should specify the file you want to analyze");
     });
 
-    it("markdown will create a default output file", async () => {
-        const outputFile = await fs.readFile("./output.md", (error, data) => { return data })
-
+    it("markdown will create a default output file", () => {
         commandLineProcessor("process input.md")
+        
+        const outputFile = fs.readFileSync("./output.md", (error, data) => { return data })
 
         expect(outputFile).toBeDefined()
     });
