@@ -28,7 +28,7 @@ Hints:
 ***
 
 - Support different delimiters
-  to change a delimiter, the beginning of the string will contain a separate line that looks like this: “//[delimiter]\n[numbers…]” for example “//;\n1;2” should return three where the default delimiter is ‘;’ .
+  to change a delimiter, the beginning of the string will contain a separate line that looks like this: `//[delimiter]\n[numbers…]` for example `//;\n1;2` should return three where the default delimiter is ‘;’ .
   the first line is optional. all existing scenarios should still be supported
 
 ***
@@ -46,11 +46,11 @@ Hints:
 
 ***
 
-- Delimiters can be of any length with the following format: “//[delimiter]\n” for example: “//[***]\n1***2***3” should return 6
+- Delimiters can be of any length with the following format: `//[delimiter]\n` for example: `//[***]\n1***2***3` should return 6
 
 ***
 
-- Allow multiple delimiters like this: “//[delim1][delim2]\n” for example “//[*][%]\n1*2%3” should return 6.
+- Allow multiple delimiters like this: `//[delim1][delim2]\n` for example `//[*][%]\n1*2%3` should return 6.
 
 ***
 
