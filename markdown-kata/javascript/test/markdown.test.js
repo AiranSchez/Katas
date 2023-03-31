@@ -24,7 +24,7 @@ Hola que tal, visita el link[^1] para enterarte de todas las novedades[^2]
 2- "Hola"  ->  "Hola"
 4- "[Hola](www.youtube.es)"  ->  "Hola[^1]\n\n[^1]: www.youtube.es"
 3- "![imagen chula](www.imgur.es/foto.png)"  ->  "![imagen chula](www.imgur.es/foto.png)"
-5- "[Hola\n que tal](www.youtube.es)"  ->  "Hola\n que tal\n\n[^1]: www.youtube.es"
+5- "[Hola\n que tal](www.youtube.es)"  ->  "Hola\n que tal[^1]\n\n[^1]: www.youtube.es"
 6- "[Hola\n\n que tal](www.youtube.es)"  ->  "Error"
 
 
@@ -87,5 +87,9 @@ describe("Markdown kata", () => {
 
     it("will transform input text with anchors as footnotes", () => {
         expect(addFootNotes("[Hola](www.youtube.es)")).toBe("Hola[^1]\n\n[^1]:www.youtube.es")
+    })
+
+    it("will transform input text with whitespaces in link text as footnotes", () => {
+        expect(addFootNotes("[Hola\n que tal](www.youtube.es)")).toBe("Hola\n que tal[^1]\n\n[^1]:www.youtube.es")
     })
 })
