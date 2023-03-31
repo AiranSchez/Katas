@@ -31,11 +31,11 @@ const addFootNotes = (inputText) => {
     if (emptyText | noLinksDetected){
         return inputText
     }
-    const resultText = transformTextWithAnchors(inputText)
+    const resultText = transformTextWithAnchors(inputText, 1)
     return resultText
 }
 
-const transformTextWithAnchors = (inputText, counter=1) => {
+const transformTextWithAnchors = (inputText, counter) => {
     if (inputText.match(/\]\((.*)/s) === null){
         return inputText
     }
@@ -44,21 +44,21 @@ const transformTextWithAnchors = (inputText, counter=1) => {
     const linkUrl = getLinkUrl(splittedTextByLink[1])
 
     const replaceInText = replaceLinksInText(inputText, linkText, linkUrl, counter)
-    return transformTextWithAnchors(replaceInText, counter++)
+    return transformTextWithAnchors(replaceInText, counter+1)
 }
 
 export { commandLineProcessor, addFootNotes };
 
 const getLinkText = (text) => {
-    return text.substring(text.indexOf("[")+1)
+    return text.substring(text.lastIndexOf("[")+1) // tiene que ser mas especifica
 }
 
 const getLinkUrl = (text) => {
-    return text.substring(0, text.length -1)
+    return text.substring(0, text.indexOf(")"))
 }
 
 const replaceLinksInText = (text, linkText, linkUrl, counter) => {
     const footnote = '[^' + counter + ']:' + linkUrl
-    const textWithFootnote = text.replace(/\[(.*?)\)/s, linkText + "[^" + counter + "]")
+    const textWithFootnote = text.replace(`[${linkText}](${linkUrl})`, linkText + "[^" + counter + "]")
     return textWithFootnote + "\n\n" + footnote
 }
