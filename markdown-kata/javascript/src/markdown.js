@@ -21,6 +21,7 @@ const commandLineProcessor = (command) => {
     }
     const inputFileName = commandSplitted[1]
     const outputFileName = commandSplitted[2]
+    const transformed = addFootNotes(inputFileName)
     write(outputFileName)
 }
 
@@ -34,9 +35,9 @@ const addFootNotes = (inputText) => {
     return resultText
 }
 
-const transformTextWithAnchors = (inputText, resulta) => {
+const transformTextWithAnchors = (inputText, transformedText) => {
     if (inputText.length === 0){
-        return resulta
+        return transformedText
     }
     const firstLinkSplittedAppeareance = inputText.split(/\]\((.*)/s)
     const linkText = firstLinkSplittedAppeareance[0].substring(1)
