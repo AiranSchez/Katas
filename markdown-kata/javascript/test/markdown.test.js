@@ -97,7 +97,9 @@ describe("Markdown kata", () => {
         expect(addFootNotes(
             "Hola que tal, [visita el link](www.youtube.es) para enterarte de [todas las novedades](www.google.es)"
         )).toBe(
-            "Hola que tal, visita el link[^1] para enterarte de todas las novedades[^2]\n\n[^1]:www.youtube.es\n[^2]:www.google.es"
+            "Hola que tal, visita el link[^1] para enterarte de todas las novedades[^2]\n\n[^1]:www.youtube.es\n\n[^2]:www.google.es"
         )
     })
+
+    // Meter un test nuevo con el mismo enlace 2 veces 
 })
