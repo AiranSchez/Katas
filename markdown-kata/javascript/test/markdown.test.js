@@ -92,4 +92,12 @@ describe("Markdown kata", () => {
     it("will transform input text with whitespaces in link text as footnotes", () => {
         expect(addFootNotes("[Hola\n que tal](www.youtube.es)")).toBe("Hola\n que tal[^1]\n\n[^1]:www.youtube.es")
     })
+
+    it("will transform input text with multiple links as footnotes", () => {
+        expect(addFootNotes(
+            "Hola que tal, [visita el link](www.youtube.es) para enterarte de [todas las novedades](www.google.es)"
+        )).toBe(
+            "Hola que tal, visita el link[^1] para enterarte de todas las novedades[^2]\n\n[^1]:www.youtube.es\n[^2]:www.google.es"
+        )
+    })
 })
