@@ -7,3 +7,6 @@
 [submodule "markdown-kata/javascript2"]
 	path = markdown-kata/javascript2
 	url = git@github.com:lean-mind/javascript-katas-template.git
+[submodule "TemplateEngineKata"]
+	path = TemplateEngineKata
+	url = git@github.com:lean-mind/typescript-boilerplate.git
