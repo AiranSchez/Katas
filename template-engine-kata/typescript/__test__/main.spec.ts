@@ -1,20 +1,19 @@
 /*
 Use cases for this test:
-    Input1  Input2     Output
-DONE 1- (  "",     {}  ) =>  "" 
-DONE 2- (  "hola",     {}  ) =>  "hola" 
-DONE 2.1- (  "hola",     {key0: "Airan"}  ) =>  "hola" 
-DONE 2.2- (  "hola ${key1}",   {}  ) =>  "hola ${key1}" 
-DONE 2.3- (  "hola ${key1}, ${key1}",   {key1: "Maik"}  ) =>  "hola Maik, Maik" 
-Covered 3- (  "Hola ${key1}", {key0: "Mario"}  ) =>  "Hola ${key1}" 
-DONE 4- (  "Hola ${key1}", {key1: "Mario"}  ) =>  "Hola Mario" 
-DONE 5- (  "Hola ${key1} y ${key2}", {key1: "Mario", key2: "Airan"}  ) =>  "Hola Mario y Airan" 
-6- (  "Hola que tal \n" +
-      "${key1} y ${key2} \n." +
-      "Tengan un buen dia." ,     {key1: "Mario", key2: "Airan"}  ) =>  "Hola que tal" + \n
-                                                                        "Mario y Airan" + \n
-                                                                        "Tengan un buen dia."
-
+           Input1                    Input2        Output
+DONE 1-   (  "",                       {}  )                =>  "" 
+DONE 2-   (  "hola",                   {}  )                =>  "hola" 
+     2.1- (  "hola",                   {key0: "Airan"}  )   =>  "hola" 
+     2.2- (  "hola ${key1}",           {}  )                =>  "hola ${key1}" 
+DONE 2.3- (  "hola ${key1}, ${key1}",  {key1: "Maik"}  )    =>  "hola Maik, Maik" 
+Cov  3-   (  "Hola ${key1}",           {key0: "Mario"}  )   =>  "Hola ${key1}" 
+DONE 4-   (  "Hola ${key1}",           {key1: "Mario"}  )   =>  "Hola Mario" 
+DONE 5-   (  "Hola ${key1} y ${key2}", {key1: "Mario", key2: "Airan"}  ) =>  "Hola Mario y Airan" 
+     6-  (  "Hola que tal \n" +
+            "${key1} y ${key2} \n." +
+            "Tengan un buen dia." ,     {key1: "Mario", key2: "Airan"}  ) =>  "Hola que tal" + \n
+                                                                              "Mario y Airan" + \n
+                                                                              "Tengan un buen dia."
 */
 describe('Template engine should', () => {
   it('process empty text and empty dictionary without parametrizing', () => {
