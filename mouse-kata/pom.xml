@@ -28,6 +28,11 @@
             <version>4.9.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.reactivex</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>1.0.8</version>
+        </dependency>
     </dependencies>
 
     <build>
