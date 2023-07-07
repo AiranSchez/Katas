@@ -7,7 +7,6 @@
 [submodule "templates/typescript-boilerplate"]
 	path = templates/typescript-boilerplate
 	url = git@github.com:lean-mind/typescript-boilerplate.git
-
 [submodule "templates/java-katas-template"]
 	path = templates/java-katas-template
 	url = git@github.com:lean-mind/java-katas-template.git

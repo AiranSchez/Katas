@@ -1,0 +1,18 @@
+{
+  "name": "katas",
+  "version": "1.0.0",
+  "description": "Proyecto para añadir y modificar las katas",
+  "author": "Airan Sánchez Brito <airanschez0@gmail.com> (https://www.airandev.com/)",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/airanschez/katas.git"
+  },
+  "homepage": "https://github.com/airanschez/katas#readme",
+  "scripts": {
+    "preupdate": "git submodule init && git submodule update",
+    "update": "git submodule foreach git checkout master && git submodule foreach git pull",
+    "new": "bash ./.scripts/new-kata.sh"
+  },
+  "devDependencies": {}
+}
