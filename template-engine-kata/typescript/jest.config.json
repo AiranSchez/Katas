@@ -1,10 +1,10 @@
 {
   "roots": [
     "<rootDir>/src",
-    "<rootDir>/__test__"
+    "<rootDir>/tests"
   ],
   "testMatch": [
-    "**/__tests__/**/*.+(ts|js)",
+    "**/tests/**/*.+(ts|js)",
     "**/?(*.)+(spec|test).+(ts|js)"
   ],
   "transform": {
