@@ -29,3 +29,9 @@ class PasswordValidator:
 
     def validate_lenght(self, password: str) -> bool:
         return len(password) < 8
+
+    def fibobacci(n: int) -> int:
+        a, b = 0, 1
+        for _ in range(n-1):
+            a, b = b, a + b
+        return a

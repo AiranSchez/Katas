@@ -44,6 +44,9 @@ class TestPasswordValidator(unittest.TestCase):
         is_valid = PasswordValidator().validate(password)
 
         self.assertFalse(is_valid)
+        
+    def test_123(self): 
+        assert PasswordValidator.fibobacci(10) == 34
 
 # NOTE: the first iteration was like this: 
 

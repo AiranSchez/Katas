@@ -13,58 +13,50 @@ from hypothesis import given, strategies as st
 # No maxibon: "Hi guys, I'm <NAME OF THE DEVELOPER>, We need more maxibons!"
 
 class TestMaxibonKata(TestCase):
- 
-    def test_one_person_takes_icecream_from_fridge(self):
-        fridge = Fridge(10)
-        
-        fridge.take_maxibon("Pedro", 3)
-        
-        assert_that(fridge.get_ammount()).is_equal_to(7)
-        
-    def test_more_than_one_person_takes_icecream_from_fridge(self):
-        fridge = Fridge(10)
-        
-        fridge.take_maxibon("Sergio", 2)
-        fridge.take_maxibon("Pedro", 3)
-        
-        assert_that(fridge.get_ammount()).is_equal_to(5)
     
-
     @given(
-        fridge_storage = st.integers(min_value=0, max_value=2),
-        ice_cream_taken = st.from_regex(r'^[3-9]|10$', fullmatch=True)
-    )     
-    def test_developer_ask_for_more_ice_cream_than_available_from_fridge(self, fridge_storage, ice_cream_taken):
-        ice_cream_taken = int(ice_cream_taken)
-        fridge = Fridge(fridge_storage)
+        freezer_maxibons = st.integers(),
+        developer_name = st.text(),
+        maxibons_taken = st.integers()
+    )
+    def test_that_freezer_is_never_empty(self, freezer_maxibons, developer_name, maxibons_taken):
+        freezer = Freezer(freezer_maxibons)
         
-        fridge.take_maxibon("Pedro", ice_cream_taken)
-        print("Fridge storage: ", fridge_storage, "Maxibons taken: ", ice_cream_taken)
+        freezer.take_maxibon(developer_name, maxibons_taken)
         
-        assert_that(fridge.get_ammount()).is_greater_than_or_equal_to(0)
+        assert_that(freezer.maxibons).is_greater_than_or_equal_to(0)
+        
+
+    # test para inicializar el frigorifico con maxibones y que no sea negativo
+    def test_that_freezer_does_not_start_with_negative_stock(self):
+        freezer = Freezer(-10)
+        
+        assert_that()
+        
+    
+class Freezer: 
+    def __init__(self, maxibons):
+        self.maxibons = maxibons
+        
+    def take_maxibon(self, developer_name, maxibons_taken):
+        if self.maxibons >= maxibons_taken: 
+            self.maxibons -= maxibons_taken
+
+
+
+
+
+
 
     # @given(
-    #     fridge_storage = st.integers(min_value=0, max_value=2)
-    # )
-    # def test_developer_ask_for_resstock_the_ice_creams(self,fridge_storage):
+    #     fridge_storage = st.integers(min_value=0, max_value=2),
+    #     ice_cream_taken = st.from_regex(r'^[3-9]|10$', fullmatch=True)
+    # )     
+    # def test_developer_ask_for_more_ice_cream_than_available_from_fridge(self, fridge_storage, ice_cream_taken):
+    #     ice_cream_taken = int(ice_cream_taken)
     #     fridge = Fridge(fridge_storage)
         
-    #     fridge.restock()
-    #     assert_that(fridge.get_ammount()).is_equal_to(10)
-
-class Fridge():
-    def __init__(self, maxibon: int) -> None:
-        self._available_maxibon = maxibon
+    #     fridge.take_maxibon("Pedro", ice_cream_taken)
+    #     print("Fridge storage: ", fridge_storage, "Maxibons taken: ", ice_cream_taken)
         
-    def take_maxibon(self, dev_name: str, maxibon_taken: int):
-        if (maxibon_taken > self._available_maxibon):
-            self._available_maxibon = 0
-            return
-        
-        self._available_maxibon = self._available_maxibon - maxibon_taken
-        
-    def get_ammount(self):
-        return self._available_maxibon
-    
-    def restock(self):
-        self._available_maxibon = 10
+    #     assert_that(fridge.get_ammount()).is_greater_than_or_equal_to(0)
